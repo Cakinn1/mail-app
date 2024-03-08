@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FiInbox } from "react-icons/fi";
-import capitalizeStr from "../../utils/capitalizeStr";
+import capitalizeStr from "../../../utils/capitalizeStr";
 
 interface NavItemsProps {
   text: string;
@@ -94,7 +94,6 @@ export default function LeftPanel() {
   }
 
   return <div className="p-2 space-y-1">d</div>;
-
 }
 
 function NavItem(props: NavItemProps) {

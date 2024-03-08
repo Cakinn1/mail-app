@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { MailData } from "../../types/mailTypes";
+import { CategoryProps, MailData } from "../../types/mailTypes";
 import { FetchError } from "../../types/errorTypes";
 
 interface FetchState {
@@ -9,10 +9,12 @@ interface FetchState {
 }
 interface MailDataState {
   mail: MailData[];
+  helperData: MailData[];
 }
 
 const initialState: MailDataState & FetchState = {
   mail: [],
+  helperData: [],
   error: null,
   loading: false,
 };
@@ -21,8 +23,9 @@ export const mailDataSlice = createSlice({
   name: "mailData",
   initialState,
   reducers: {
-    filterByCategory: (state, action: PayloadAction<{ category: string }>) => {
-      state.mail = state.mail.filter((item) => {
+    filterByCategory: (state, action: PayloadAction<CategoryProps>) => {
+      const arr = [...state.helperData];
+      state.mail = arr.filter((item) => {
         return item.category === action.payload.category;
       });
     },
@@ -31,7 +34,8 @@ export const mailDataSlice = createSlice({
       state.error = null;
     },
     setMailData: (state, action: PayloadAction<MailData[]>) => {
-      state.mail = action.payload;
+      state.mail = [...action.payload];
+      state.helperData = [...action.payload];
       state.loading = false;
     },
     fetchDataError: (state, action: PayloadAction<FetchError | null>) => {

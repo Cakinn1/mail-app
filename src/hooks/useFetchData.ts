@@ -9,7 +9,6 @@ import {
 } from "../redux/slices/mailDataSlice";
 import { MailData } from "../types/mailTypes";
 import { FetchError } from "../types/errorTypes";
-import { clearTimeout } from "timers";
 
 export default function useFetchData() {
   const dispatch = useDispatch();
@@ -38,7 +37,6 @@ export default function useFetchData() {
     try {
       dispatch(fetchDataStart(true));
       startTimeout();
-      handleTimeout().dataTimeOut
       if (dataTimeOut) {
         dispatch(fetchDataError(FetchError.TimeoutError));
       } else {

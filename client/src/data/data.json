@@ -1,0 +1,91 @@
+[
+  {
+    "id": 1,
+    "fullName": "John Doe",
+    "datePosted": "2023-12-21T10:30:00",
+    "email": "jdoe@example.com",
+    "userPost": "I have an exciting project idea! It involves expanding our services... Let's set up a meeting to discuss.",
+    "postType": ["announcement", "newsletter"],
+    "seen": "seen",
+    "category": "inbox",
+    "subject": "Exciting New Project Proposal"
+  },
+  {
+    "id": 2,
+    "fullName": "Alice Smith",
+    "datePosted": "2023-12-19T08:15:00",
+    "email": "alice.smith@company.com",
+    "userPost": "Urgent: Please review this ASAP. We need to address potential security vulnerabilities. Details attached.",
+    "postType": ["urgent"],
+    "seen": "not_seen",
+    "category": "trash",
+    "subject": "Urgent Security Matter"
+  },
+  {
+    "id": 3,
+    "fullName": "Marketing Team",
+    "datePosted": "2023-12-22T16:05:00",
+    "email": "marketing@company.com",
+    "userPost": "Don't miss our end-of-year sale! Save big on our top products. Limited time offer.",
+    "postType": ["promotion"],
+    "seen": "not_seen",
+    "category": "archive",
+    "subject": "End-of-Year Sale - Save Now!"
+  },
+  {
+    "id": 4,
+    "fullName": "Support Team",
+    "datePosted": "2023-12-20T12:45:00",
+    "email": "support@company.com",
+    "userPost": "Having trouble with your account? We're here to help! Submit a ticket or schedule a call with our support team.",
+    "postType": ["question", "help"],
+    "seen": "seen",
+    "category": "inbox",
+    "subject": "Need Help? We're Here for You"
+  },
+  {
+    "id": 5,
+    "fullName": "David Miller",
+    "datePosted": "2024-03-09T14:22:00",
+    "email": "dmiller@company.com",
+    "userPost": "I've prepared a detailed market analysis for our upcoming launch. Key insights and recommendations attached.",
+    "postType": ["report", "analysis"],
+    "seen": "not_seen",
+    "category": "inbox",
+    "subject": "Market Analysis Report"
+  },
+
+  {
+    "id": 6,
+    "fullName": "Operations Team",
+    "datePosted": "2024-03-10T12:15:00",
+    "email": "operations@company.com",
+    "userPost": "New shipment has been sent. Tracking details attached.",
+    "postType": ["notification", "status-update"],
+    "seen": "seen",
+    "category": "sent",
+    "subject": "Shipment Update"
+  },
+  {
+    "id": 7,
+    "fullName": "Sarah Johnson",
+    "datePosted": "2024-03-11T07:30:00",
+    "email": "sjohnson@company.com",
+    "userPost": "Rough draft of the presentation. Please give it a look.",
+    "postType": ["work-in-progress"],
+    "seen": null,
+    "category": "drafts",
+    "subject": "Presentation Draft"
+  },
+  {
+    "id": 8,
+    "fullName": "Marketing Team",
+    "datePosted": "2024-03-12T18:22:00",
+    "email": "marketing@company.com",
+    "userPost": "Check out these promotional images for the upcoming campaign!",
+    "postType": ["marketing", "campaign"],
+    "seen": "seen",
+    "category": "junk",
+    "subject": "Promotional Images"
+  }
+]

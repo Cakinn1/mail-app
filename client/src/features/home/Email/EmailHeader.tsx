@@ -11,9 +11,9 @@ export default function EmailHeader() {
 
   const dispatch = useDispatch();
   const { mail } = useFetchData();
-  useEffect(() => {
-    console.log(mail);
-  }, [mail]);
+  // useEffect(() => {
+  //   console.log(mail);
+  // }, [mail]);
   return (
     <div>
      dsad

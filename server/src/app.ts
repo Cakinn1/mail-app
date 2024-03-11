@@ -10,12 +10,14 @@ dotenv.config();
 // create express app
 const app = express();
 
+//  Connect to MongoDB
 async function connectToMongo() {
   try {
     mongoose.connect(process.env.MONGO_URL || "");
     console.log("Connected to MongoDB");
   } catch (error) {
     console.error("Failed to connect to mongodb", error);
+    process.exit(1);
   }
 }
 connectToMongo();
@@ -23,49 +25,35 @@ connectToMongo();
 // middleware
 app.use(cors());
 app.use(express.json());
-const mailData: MailData = {
-  id: 7,
-  fullName: "Sarah Johnson",
-  datePosted: "2024-03-11T07:30:00",
-  email: "sjohnson@company.com",
-  userPost: "Rough draft of the presentation. Please give it a look.",
-  postType: ["work-in-progress"],
-  seen: "seen",
-  category: "drafts",
-  subject: "Presentation Draft",
-};
 
-const router = express.Router();
-router.post("/mails", async (req: Request, res: Response) => {
+// CRUD ROUTES
+
+app.post("/mails", async (req: Request, res: Response) => {
   try {
-    const newMailObject = new Mail(req.body);
-    console.log(newMailObject);
-    const savedMail = await newMailObject.save();
+    const newMail = new Mail(req.body);
+    console.log(req.body);
+    const savedMail = await newMail.save();
     res.status(201).json(savedMail);
-  } catch (error) {}
-});
-
-router.get("/mails", async (req: Request, res: Response) => {
-  try {
-    const mails = await Mail.find(); // Fetch all mails from the database
-    res.json(mails);
   } catch (error) {
-    res.status(500).json("error");
+    console.error(error);
+    res.status(500).json({ error: "failed to save mail" });
   }
 });
 
-app.post('/receiveData', (req, res) => {
-  const receivedData = req.body;
-  console.log('Received Data:', receivedData); 
-  res.json({ message: 'Data received succedssfully!' });
+app.get("/", (req: Request, res: Response) => {
+  res.json({ message: "hi", timestamp: 10, otherData: [1, 2, 3] });
 });
 
-app.use('/api/mails', router); 
+app.get("/mails", async (req: Request, res: Response) => {
+  try {
+    const mails = await Mail.find();
+    res.json(mails);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Failed to fetch mails" });
+  }
+});
 
 app.listen(5020, () => {
-  console.log("server starteddasda");
-});
-
-app.get("/", (req, res) => {
-  res.end();
+  console.log("server starteddasda testingdd");
 });

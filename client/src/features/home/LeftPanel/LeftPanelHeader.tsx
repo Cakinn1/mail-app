@@ -1,7 +1,9 @@
-import React from 'react'
+import React from "react";
 
 export default function LeftPanelHeader() {
   return (
-    <div className='border p-1 flex'>UserProfile</div>
-  )
+    <div className="border p-1 flex">
+      <div>left</div>
+    </div>
+  );
 }

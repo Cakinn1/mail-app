@@ -1,4 +1,5 @@
 import mongoose, { Schema } from "mongoose";
+
 export interface MailData {
   id: number;
   fullName: string;

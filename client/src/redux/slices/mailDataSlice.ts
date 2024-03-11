@@ -44,9 +44,14 @@ export const mailDataSlice = createSlice({
     },
     updateSearchValues: (state) => {
       const maxHistoryLength = 5;
+
       if (state.previousValues.length >= maxHistoryLength) {
-        state.previousValues.shift();
+        // state.previousValues.shift();
       }
+      let newValue = [...state.previousValues];
+      newValue.concat(state.mail);
+      // console.log(newValue);
+      // not working?
       state.previousValues = [...state.previousValues].concat(state.mail);
     },
     filterBySearchValue: (state, action: PayloadAction<string>) => {
@@ -55,6 +60,7 @@ export const mailDataSlice = createSlice({
         state.previousValues.pop();
 
         state.mail = state.previousValues;
+        console.log(action.payload)
       } else {
         state.mail = [...state.mail].filter((item) => {
           const inputValue = action.payload.toLowerCase();

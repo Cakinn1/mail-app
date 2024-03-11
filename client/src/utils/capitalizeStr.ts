@@ -1,9 +1,10 @@
-export default function capitalizeStr(str: string): string {
-  let result: string = "";
-
-  for (let word of str.split(" ")) {
-    result += word[0].toUpperCase() + word.slice(1).toLowerCase();
+export default function capitalizeStr(str: string | undefined): string {
+  if (!str) {
+    return "";
   }
-
-  return result;
+  let result: string[] = [];
+  for (let word of str.split(" ")) {
+    result.push(word[0].toUpperCase() + word.slice(1).toLowerCase());
+  }
+  return result.join(" ");
 }

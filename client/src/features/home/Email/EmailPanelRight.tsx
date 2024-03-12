@@ -21,17 +21,22 @@ export default function EmailPanelRight(props: EmailPanelRightProps) {
   );
   const { selectedMailId, setSelectedMailId, findMailById } = props;
   const dispatch = useDispatch();
-  const { mail } = useFetchData();
+  const { mail, error, loading } = useFetchData();
 
   useEffect(() => {
-    if (!selectedMailId || !mail) {
-      console.log("error no values");
-      setSelectedMailId(0);
-      return;
-    }
+    // if (!selectedMailId || !mail) {
+    //   console.log("error no values");
+    //   setSelectedMailId(0);
+    //   return;
+    // }
+
     const currentMail = findMailById();
-    if (currentMail) setCurrentMailLoaded(currentMail);
-  }, [selectedMailId]);
+    if (currentMail) {
+      setCurrentMailLoaded(currentMail);
+    }
+    console.log("ni");
+
+  }, [selectedMailId, currentMailLoaded, mail, loading, error]);
 
   return (
     <div className="border  flex flex-col">

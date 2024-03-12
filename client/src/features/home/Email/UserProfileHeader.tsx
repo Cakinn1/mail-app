@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { PanelRightGlobalProps } from "./EmailPanelRight";
 import { formatMailDate } from "../../../utils/formatDate";
 import capitalizeStr from "../../../utils/capitalizeStr";
@@ -6,6 +6,10 @@ import capitalizeStr from "../../../utils/capitalizeStr";
 export default function UserProfileHeader(props: PanelRightGlobalProps) {
   const { currentMailLoaded } = props;
   const formattedDate = formatMailDate(currentMailLoaded?.datePosted);
+
+  useEffect(() => {
+    console.log("hi", currentMailLoaded);
+  }, [currentMailLoaded]);
   return (
     <div className="flex flex-1 gap-x-4 p-4 border-b">
       <div className="bg-gray-400 h-10 w-10 flex justify-center items-center rounded-full">

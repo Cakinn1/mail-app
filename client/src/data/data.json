@@ -54,7 +54,6 @@
     "category": "inbox",
     "subject": "Market Analysis Report"
   },
-
   {
     "id": 6,
     "fullName": "Operations Team",
@@ -83,7 +82,7 @@
     "datePosted": "2024-03-12T18:22:00",
     "email": "marketing@company.com",
     "userPost": "Check out these promotional images for the upcoming campaign!",
-    "postType": ["marketing", "campaign"],
+    "postType": ["marketingd", "campaign"],
     "seen": "seen",
     "category": "junk",
     "subject": "Promotional Images"

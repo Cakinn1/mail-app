@@ -15,7 +15,7 @@ interface InboxProps {
 
 export default function Inbox(props: InboxProps) {
   const { setInputValue, inputValue, setSelectedMailId } = props;
-  const { mail } = useFetchData();
+  const { mail,   } = useFetchData();
   const dispatch = useDispatch();
 
   function handleSearch(value: string) {
@@ -24,11 +24,8 @@ export default function Inbox(props: InboxProps) {
     dispatch(updateSearchValues());
   }
 
-  const renderMail = () => {
-    return mail.map((item, idx) => (
-      <div onClick={() => setSelectedMailId(item.id)} key={idx}></div>
-    ));
-  };
+    
+
   return (
     <div className="p-4 space-y-2">
       <input

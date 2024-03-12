@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { resolveData } from "../services/api";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store/store";
@@ -12,6 +12,8 @@ import { FetchError } from "../types/errorTypes";
 
 export default function useFetchData() {
   const dispatch = useDispatch();
+  const [fallBackData, setFallBackData] = useState<MailData[]>([]);
+
   const { error, loading, mail } = useSelector(
     (state: RootState) => state.mailData
   );
@@ -43,6 +45,7 @@ export default function useFetchData() {
         const data = (await resolveData()) as MailData[];
         clearTheTimeout();
         dispatch(setMailData(data));
+        setFallBackData(data);
         dispatch(fetchDataError(null));
       }
     } catch (error: unknown) {
@@ -57,5 +60,5 @@ export default function useFetchData() {
     fetchDataWithTimeout();
   }, []);
 
-  return { error, loading, mail };
+  return { error, loading, mail, fallBackData };
 }

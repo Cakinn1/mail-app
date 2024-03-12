@@ -54,13 +54,20 @@ export const mailDataSlice = createSlice({
       // not working?
       state.previousValues = [...state.previousValues].concat(state.mail);
     },
+    handleSeenValue: (state, action: PayloadAction<number>) => {
+      state.mail = [...state.mail].map((mail) => {
+        return mail.id === action.payload && mail.seen === "not_seen"
+          ? { ...mail, seen: "seen" }
+          : mail;
+      });
+    },
     filterBySearchValue: (state, action: PayloadAction<string>) => {
       const searchValue = action.payload.toLowerCase();
       if (searchValue === "" && state.previousValues.length > 0) {
         state.previousValues.pop();
 
         state.mail = state.previousValues;
-        console.log(action.payload)
+        console.log(action.payload);
       } else {
         state.mail = [...state.mail].filter((item) => {
           const inputValue = action.payload.toLowerCase();
@@ -95,5 +102,6 @@ export const {
   filterBySeen,
   filterBySearchValue,
   updateSearchValues,
+  handleSeenValue,
 } = mailDataSlice.actions;
 export default mailDataSlice.reducer;

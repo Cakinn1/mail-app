@@ -26,6 +26,7 @@ export default function LeftPanel(props: LeftPanelProps) {
   const [isSelected, setIsSelected] = useState<string>("Inbox");
   const dispatch = useDispatch();
   const navgiate = useNavigate();
+  
   function handleSelect(select: string) {
     setIsSelected(select);
     dispatch(filterByCategory(select));

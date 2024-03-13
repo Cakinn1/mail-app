@@ -91,6 +91,14 @@ export const mailDataSlice = createSlice({
       state.error = action.payload;
       state.loading = false;
     },
+    deleteAllMailItems: (state) => {
+      state.mail = [];
+    },
+    filterByPageLocation: (state, action: PayloadAction<string>) => {
+      state.mail = [...state.mail].filter(
+        (item) => item.category === action.payload
+      );
+    },
   },
 });
 
@@ -103,5 +111,7 @@ export const {
   filterBySearchValue,
   updateSearchValues,
   handleSeenValue,
+  deleteAllMailItems,
+  filterByPageLocation,
 } = mailDataSlice.actions;
 export default mailDataSlice.reducer;

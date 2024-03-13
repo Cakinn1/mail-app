@@ -4,7 +4,7 @@ import Archive from "../features/archive/Archive";
 import { JsxElement } from "typescript";
 import Trash from "../pages/Trash";
 import { useDispatch } from "react-redux";
-import { filterBySeen } from "../redux/slices/mailDataSlice";
+import { deleteAllMailItems, filterBySeen } from "../redux/slices/mailDataSlice";
 import { inboxContext } from "../context/InboxProvider";
 
 export default function DynamicHeader() {
@@ -55,9 +55,18 @@ export default function DynamicHeader() {
     );
   };
 
+  const ArchiveHeader = () => {
+    return (
+      <div  className={container}>
+        <h1 className={headerText}>Archive</h1>
+        <button onClick={() => dispatch(deleteAllMailItems())}>Delete all</button>
+      </div>
+    );
+  };
+
   const headerMap: Record<string, React.ReactNode> = {
     "/": <InboxHeader />,
-    "/archive": <InboxHeader />,
+    "/archive": <ArchiveHeader />,
     defau: <Trash />,
   };
   const currentHeader = headerMap[location.pathname] || headerMap["default"];
